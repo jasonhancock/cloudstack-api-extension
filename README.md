@@ -132,15 +132,19 @@ HOW TO USE:
 Once this is all set up, simply point at the apache instance instead of
 CloudStack's native API endpoint. For example, if you're using the
 cloudstack-php-client, instead of this:
+
     $cloudstack = new CloudStackClient(
         'http://cloudmanager.example.com:8080/client/api',
         'API_KEY',
         'SECRET_KEY'
     );
+
 You might have this (assuming apache is running on port 80 of the same box
 as your cloud management server):
+
     $cloudstack = new CloudStackClient(
         'http://cloudmanager.example.com/client/api',
         'API_KEY',
         'SECRET_KEY'
     );
+
