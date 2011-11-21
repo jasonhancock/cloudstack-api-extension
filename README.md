@@ -30,9 +30,10 @@ bundle named 'foo' and have it deploy a machine with whatever 'foo' maps
 to.
 
 A total of three commands have been added to the API:
-* getUserData(id) - returns the userdata associated with the given instance id
-* listBundles() - returns a list of the bundles offered
-* deployBundle(bundle) - Launches a bundle of the specified name 
+
+ * getUserData(id) - returns the userdata associated with the given instance id
+ * listBundles() - returns a list of the bundles offered
+ * deployBundle(bundle) - Launches a bundle of the specified name 
 
 It is important to note that I'm not doing any fancy account->VM permissions
 checking. This means that anyone with a valid API key/secret combo can read
@@ -90,7 +91,7 @@ for accessing the MySQL database
 * bundle_file: The path to the config file defining the bundle offerings.
 
 BUNDLE FILE:
------------_
+------------
 An example bundle file might look like:
 
     <?php
