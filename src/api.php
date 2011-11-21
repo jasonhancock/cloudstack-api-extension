@@ -116,6 +116,13 @@ class ExtendedCloudAPI {
         return urlencode(base64_encode(@hash_hmac('SHA1', $query, $this->api_secret, true)));
     }
 
+    /*
+     * This is a hack...it just throws an exception.
+     */
+    protected function myThrow($msg) {
+        throw new Exception($msg);
+    }
+
     public function getUserData($id) {
         $this->connectDB();
 
@@ -123,7 +130,7 @@ class ExtendedCloudAPI {
             throw new Exception('Invalid ID');
 
         $q = sprintf('SELECT user_data from user_vm WHERE id=%d', $id);
-        $result = mysql_query($q, $this->dbh) or throw new Exception(mysql_error($this->dbh));
+        $result = mysql_query($q, $this->dbh) or $this->myThrow(mysql_error($this->dbh));
 
         $data = ($row = mysql_fetch_row($result)) ? $row[0] : '';
 
@@ -163,7 +170,7 @@ class ExtendedCloudAPI {
         $this->connectDB();
 
         $q = sprintf('SELECT secret_key from user WHERE api_key=\'%s\'', mysql_real_escape_string($this->api_key, $this->dbh));
-        $result = mysql_query($q, $this->dbh) or throw new Exception(mysql_error($this->dbh));
+        $result = mysql_query($q, $this->dbh) or $this->myThrow(mysql_error($this->dbh));
 
         if($row = mysql_fetch_row($result)) {
             $this->api_secret = $row[0];
@@ -195,6 +202,6 @@ class ExtendedCloudAPI {
             $configs['db.cloud.username'],
             $configs['db.cloud.password'])
             or die(mysql_error($this->dbh));
-        mysql_select_db($configs['db.cloud.name']) or throw new Exception(mysql_error($this->dbh));
+        mysql_select_db($configs['db.cloud.name']) or $this->myThrow(mysql_error($this->dbh));
     }
 }
