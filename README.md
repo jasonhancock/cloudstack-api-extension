@@ -96,7 +96,7 @@ bundles.php in your current working dir
 BUNDLE FILE:
 ------------
 An example bundle file might look like:
-
+```php
     <?php
     
     return array(
@@ -125,6 +125,7 @@ An example bundle file might look like:
             'userdata'     => base64_encode("role=foo\n"),
         )
     );
+```
 
 You will need to update the ID's to reflect valid values for your environment.
 
