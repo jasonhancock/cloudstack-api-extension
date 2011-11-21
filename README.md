@@ -85,10 +85,13 @@ the cloud group and then restarted apache. This is necessary for api.php to
 have read access to the db.properties file.
 
 The magic all happens in api.php. When the ExtendedCloudAPI object is
-instantiated, it gets two arguments:
+instantiated, it gets a few arguments:
+
 * db_file: The path to the db.properties file used by cloudstack. This is necessary 
-for accessing the MySQL database
-* bundle_file: The path to the config file defining the bundle offerings.
+for accessing the MySQL database. Defaults to /etc/cloud/management/db.properties
+* bundle_file: The path to the config file defining the bundle offerings. Defaults to
+bundles.php in your current working dir
+*  api_endpoint: The path to the real API endpoint. Defaults to http://localhost:8080/client/api
 
 BUNDLE FILE:
 ------------
